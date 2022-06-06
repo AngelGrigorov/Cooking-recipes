@@ -1,2 +1,2 @@
 # Cooking-recipes
-Simple SPA with .NET 8 &amp; Razor pages
+Simple SPA with .NET 6.0 &amp; Razor pages
