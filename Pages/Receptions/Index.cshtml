@@ -1,0 +1,48 @@
+@page "/Receptions/Index"
+@model ReceptionsListProject.Pages_Receptions.IndexModel
+
+@{
+    ViewData["Title"] = "List";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-7">
+<p>
+    <a asp-page="Create"><img src="~/images/plus-circle-fill.svg" width="30px" /></a>
+</p>
+        </div>
+        <div class="col-sm-5">
+<form>
+    <p>
+        <select asp-for="ReceptionType" asp-items="Model.Types">
+            <option value="">All</option>
+        </select>
+        Title: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+@foreach (var item in Model.Reception)
+{
+   <div class="card col-6 col-sm-4" >
+                <a asp-page="./Details" asp-route-id="@item.ID">
+                <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="Card image cap"></a>
+                    <div class="card-body">
+                <p class="card-text">@Html.DisplayFor(modelItem => item.Title)</p>
+                <a asp-page="./Edit" asp-route-id="@item.ID"><img src="~/images/pencil-fill.svg" width="18px" /></a> |
+                <a asp-page="./Details" asp-route-id="@item.ID"><img src="~/images/eye-fill.svg" width="18px" /></a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID"><img src="~/images/trash-fill.svg" width="18px" /></a>
+                    </div>
+                </div> 
+}
+     </div>
+</div>
+  
